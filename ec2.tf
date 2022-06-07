@@ -16,3 +16,4 @@ resource "aws_ec2_tag" "name-tag" {
   value       = "${var.COMPONENT}-${var.ENV}"
 }
 
+## Setup of rabbitmq inside ec2 is still pending

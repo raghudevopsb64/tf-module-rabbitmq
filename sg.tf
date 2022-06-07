@@ -1,12 +1,12 @@
 resource "aws_security_group" "main" {
-  name        = "allow_elasticache_redis_${var.COMPONENT}_${var.ENV}"
-  description = "allow_elasticache_redis_${var.COMPONENT}_${var.ENV}"
+  name        = "allow_ec2_${var.COMPONENT}_${var.ENV}"
+  description = "allow_ec2_${var.COMPONENT}_${var.ENV}"
   vpc_id      = var.VPC_ID
 
   ingress {
-    description = "REDIS"
-    from_port   = 6379
-    to_port     = 6379
+    description = "RABBITMQ"
+    from_port   = 5672
+    to_port     = 5672
     protocol    = "tcp"
     cidr_blocks = [var.VPC_CIDR]
   }
@@ -20,7 +20,7 @@ resource "aws_security_group" "main" {
   }
 
   tags = {
-    Name = "allow_elasticache_redis_${var.COMPONENT}_${var.ENV}"
+    Name = "allow_ec2_${var.COMPONENT}_${var.ENV}"
   }
 }
 
