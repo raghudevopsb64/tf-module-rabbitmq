@@ -3,3 +3,13 @@ data "aws_ami" "ami" {
   name_regex  = "base-with-ansible"
   owners      = ["self"]
 }
+
+
+data "aws_secretsmanager_secret" "secret" {
+  name = "roboshop"
+}
+
+data "aws_secretsmanager_secret_version" "secret" {
+  secret_id = data.aws_secretsmanager_secret.secret.id
+}
+
